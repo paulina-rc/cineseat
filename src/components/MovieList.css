@@ -1,0 +1,85 @@
+.movie-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+/* La sombra va en el <li> para que respete los troqueles del boleto */
+.movie-list li {
+  filter: drop-shadow(3px 3px 0 var(--ink));
+  transition: transform 0.15s, filter 0.15s;
+  animation: deal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 90ms + 150ms);
+}
+
+.movie-list li:hover {
+  transform: translate(-2px, -2px);
+  filter: drop-shadow(5px 5px 0 var(--ink));
+}
+
+.movie-card {
+  --stub: 86px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: var(--stub) 1fr;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: var(--paper-light);
+  cursor: pointer;
+  /* Dos medias lunas recortadas arriba y abajo de la línea punteada */
+  mask:
+    radial-gradient(circle at var(--stub) 0, transparent 9px, #000 9.5px) top / 100% 51% no-repeat,
+    radial-gradient(circle at var(--stub) 100%, transparent 9px, #000 9.5px) bottom / 100% 51% no-repeat;
+}
+
+.movie-card--active {
+  background: var(--pink);
+}
+
+.movie-card__time {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.movie-card__info {
+  display: grid;
+  gap: 2px;
+  padding: 16px 18px;
+  border-left: 2px dashed var(--ink);
+}
+
+.movie-card__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.movie-card__meta {
+  font-size: 13px;
+}
+
+.movie-list li:has(.movie-card:focus-visible) {
+  outline: 3px solid var(--blue);
+  outline-offset: 5px;
+}
+
+@keyframes deal {
+  from {
+    opacity: 0;
+    transform: translateX(-24px) rotate(-2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-list li {
+    animation: none;
+  }
+}
