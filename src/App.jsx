@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import MovieList from './components/MovieList'
 import SeatMap from './components/SeatMap'
+import Summary from './components/Summary'
 import { movies } from './data/movies'
 
 const MAX_SEATS = 8
@@ -44,6 +45,7 @@ function App() {
             selected={selectedSeats}
             onToggle={handleToggleSeat}
           />
+          <Summary movie={movie} seats={selectedSeats} />
         </section>
       </main>
     </div>
