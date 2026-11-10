@@ -1,16 +1,65 @@
-# React + Vite
+# CineSeat
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Interactive movie theater seat picker built with **React** and **Vite**.
 
-Currently, two official plugins are available:
+Choose a movie, pick your seats on the theater map and confirm the booking. Reservations are saved in the browser, so they are still there after a page reload.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live demo:** https://paulina-rc.github.io/cineseat/
 
-## React Compiler
+![CineSeat screenshot](docs/screenshot.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the Oxlint configuration
+- Movie list with showtime, genre, duration and price
+- Interactive seat map with free, selected, reserved and occupied states
+- Live booking summary with total price in colones (CRC)
+- Reservations persisted with `localStorage` through a custom hook
+- Responsive layout for desktop and mobile
+- Automatic deploy to GitHub Pages with GitHub Actions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Tech stack
+
+| Tool | Purpose |
+|---|---|
+| React | UI components and state |
+| Vite | Dev server and production build |
+| CSS | Component-scoped styles, no framework |
+| GitHub Actions | Build and deploy on every push to `main` |
+
+## Getting started
+
+Requirements: [Node.js](https://nodejs.org/) LTS.
+
+```bash
+git clone https://github.com/paulina-rc/cineseat.git
+cd cineseat
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 in your browser.
+
+## Scripts
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Creates the production build in `dist/` |
+| `npm run preview` | Serves the production build locally |
+| `npm run lint` | Checks the code with oxlint |
+
+## Project structure
+
+```
+src/
+├── components/   # Header, MovieList, SeatMap, Seat, Summary
+├── data/         # Movie catalog and theater layout
+├── hooks/        # useLocalStorage
+├── App.jsx       # Main state and layout
+├── main.jsx      # Entry point
+└── index.css     # Global styles and design tokens
+```
+
+## Author
+
+Paulina Rojas · [PR.DEV](https://github.com/paulina-rc)
