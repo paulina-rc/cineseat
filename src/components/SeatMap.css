@@ -1,0 +1,183 @@
+.seat-map {
+  position: relative;
+  background: var(--paper-light);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 26px 22px 22px;
+  overflow-x: auto;
+}
+
+/* La pantalla vista en perspectiva */
+.seat-map__screen {
+  position: relative;
+  width: 78%;
+  margin: 0 auto 44px;
+  padding: 7px 0;
+  background: var(--ink);
+  color: var(--paper);
+  clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+}
+
+.seat-map__rows {
+  position: relative;
+  display: grid;
+  gap: 9px;
+  justify-content: center;
+}
+
+/* El haz del proyector sobre las butacas */
+.seat-map__rows::before {
+  content: '';
+  position: absolute;
+  inset: -40px -10% auto;
+  height: 120px;
+  background: linear-gradient(var(--pink-soft), transparent);
+  clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.seat-map__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.seat-map__row-label {
+  width: 20px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.seat-map__cell--aisle {
+  margin-right: 24px;
+}
+
+.seat {
+  width: 33px;
+  height: 31px;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 10px 10px 3px 3px;
+  background: var(--paper-light);
+  font-family: var(--font-type);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s, background 0.12s, box-shadow 0.12s;
+}
+
+.seat--free:hover {
+  background: var(--pink-soft);
+  transform: translateY(-3px);
+  box-shadow: 0 3px 0 var(--ink);
+}
+
+.seat--selected {
+  background: var(--pink);
+  transform: translateY(-3px);
+  box-shadow: 0 3px 0 var(--ink);
+  animation: pop 0.25s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+/* Ocupada: rayada, como tachada a mano */
+.seat--occupied {
+  border-color: rgba(27, 26, 31, 0.35);
+  background: repeating-linear-gradient(-45deg, rgba(27, 26, 31, 0.45) 0 2px, transparent 2px 6px);
+  color: transparent;
+  cursor: not-allowed;
+}
+
+.seat:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.seat-map__legend {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 30px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px dashed var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seat-map__legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 16px;
+  height: 14px;
+  border: 2px solid var(--ink);
+  border-radius: 5px 5px 2px 2px;
+  background: var(--paper-light);
+}
+
+.dot--selected {
+  background: var(--pink);
+}
+
+.dot--occupied {
+  border-color: rgba(27, 26, 31, 0.35);
+  background: repeating-linear-gradient(-45deg, rgba(27, 26, 31, 0.45) 0 2px, transparent 2px 5px);
+}
+
+@keyframes pop {
+  from {
+    transform: translateY(0) scale(0.8);
+  }
+}
+
+@media (max-width: 520px) {
+  .seat-map {
+    padding: 22px 10px 16px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .seat-map__row {
+    gap: 3px;
+  }
+
+  .seat-map__row-label {
+    width: 14px;
+    font-size: 14px;
+  }
+
+  .seat-map__cell--aisle {
+    margin-right: 10px;
+  }
+
+  .seat {
+    width: 24px;
+    height: 25px;
+    border-radius: 8px 8px 3px 3px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .seat,
+  .seat--selected {
+    animation: none;
+    transition: none;
+  }
+}
