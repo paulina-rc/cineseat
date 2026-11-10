@@ -8,14 +8,6 @@ Choose a movie, pick your seats on the theater map and confirm the booking. Rese
 
 ![CineSeat screenshot](docs/screenshot.png)
 
-## Features
-
-- Movie list with showtime, genre, duration and price
-- Interactive seat map with free, selected, reserved and occupied states
-- Live booking summary with total price in colones (CRC)
-- Reservations persisted with `localStorage` through a custom hook
-- Responsive layout for desktop and mobile
-- Automatic deploy to GitHub Pages with GitHub Actions
 
 ## Tech stack
 
@@ -52,14 +44,18 @@ Open http://localhost:5173 in your browser.
 
 ```
 src/
-├── components/   # Header, MovieList, SeatMap, Seat, Summary
-├── data/         # Movie catalog and theater layout
+├── components/   # header, movieList, seatMap, seat, summary
+├── data/         # movie catalog and theater layout
 ├── hooks/        # useLocalStorage
-├── App.jsx       # Main state and layout
-├── main.jsx      # Entry point
-└── index.css     # Global styles and design tokens
+├── App.jsx       # main state and layout
+├── main.jsx      # entry point
+└── index.css     # global styles and design tokens
 ```
 
 ## Author
 
-Paulina Rojas · [PR.DEV](https://github.com/paulina-rc)
+**Paulina Rojas** — [@paulina-rc](https://github.com/paulina-rc)
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
