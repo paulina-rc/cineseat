@@ -98,15 +98,74 @@
   color: var(--pink);
 }
 
+.summary__confirm {
+  padding: 14px;
+  border: 2px solid var(--pink);
+  background: var(--pink);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.summary__confirm:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--blue);
+}
+
+.summary__confirm:disabled {
+  background: transparent;
+  border-color: rgba(242, 236, 224, 0.3);
+  color: rgba(242, 236, 224, 0.4);
+  cursor: not-allowed;
+}
+
+.summary__confirm:focus-visible,
+.summary__reset:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.summary__success {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--blue);
+  color: var(--paper-light);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.summary__reset {
+  justify-self: start;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--paper);
+  opacity: 0.7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.summary__reset:hover {
+  opacity: 1;
+}
+
 .summary__barcode {
   height: 34px;
   margin-top: 4px;
-  background: repeating-linear-gradient(90deg,
-      var(--paper) 0 2px,
-      transparent 2px 4px,
-      var(--paper) 4px 5px,
-      transparent 5px 9px,
-      var(--paper) 9px 12px,
-      transparent 12px 14px);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--paper) 0 2px,
+    transparent 2px 4px,
+    var(--paper) 4px 5px,
+    transparent 5px 9px,
+    var(--paper) 9px 12px,
+    transparent 12px 14px
+  );
   opacity: 0.85;
 }

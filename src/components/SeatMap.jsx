@@ -2,9 +2,10 @@ import Seat from './Seat'
 import { ROWS, SEATS_PER_ROW, AISLE_AFTER } from '../data/movies'
 import './SeatMap.css'
 
-function SeatMap({ occupied, selected, onToggle }) {
+function SeatMap({ occupied, reserved, selected, onToggle }) {
   function getStatus(seatId) {
     if (occupied.includes(seatId)) return 'occupied'
+    if (reserved.includes(seatId)) return 'reserved'
     if (selected.includes(seatId)) return 'selected'
     return 'free'
   }
@@ -39,6 +40,7 @@ function SeatMap({ occupied, selected, onToggle }) {
       <ul className="seat-map__legend">
         <li><span className="dot dot--free" /> Libre</li>
         <li><span className="dot dot--selected" /> Tu selección</li>
+        <li><span className="dot dot--reserved" /> Tus reservas</li>
         <li><span className="dot dot--occupied" /> Ocupada</li>
       </ul>
     </div>

@@ -3,6 +3,7 @@ function Seat({ id, status, onToggle }) {
     free: 'libre',
     selected: 'seleccionada',
     occupied: 'ocupada',
+    reserved: 'reservada por vos',
   }
 
   return (
@@ -10,7 +11,7 @@ function Seat({ id, status, onToggle }) {
       type="button"
       className={`seat seat--${status}`}
       onClick={() => onToggle(id)}
-      disabled={status === 'occupied'}
+      disabled={status === 'occupied' || status === 'reserved'}
       aria-label={`Butaca ${id}, ${labels[status]}`}
       title={id}
     >

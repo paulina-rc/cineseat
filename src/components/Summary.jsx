@@ -9,7 +9,7 @@ function sortSeats(seats) {
   })
 }
 
-function Summary({ movie, seats }) {
+function Summary({ movie, seats, lastBooking, hasReservations, onConfirm, onReset }) {
   const total = seats.length * movie.price
 
   return (
@@ -38,6 +38,28 @@ function Summary({ movie, seats }) {
         </span>
         <strong>{formatPrice(total)}</strong>
       </div>
+
+      <button
+        type="button"
+        className="summary__confirm"
+        onClick={onConfirm}
+        disabled={seats.length === 0}
+      >
+        Confirmar reserva
+      </button>
+
+      {lastBooking && (
+        <p className="summary__success" role="status">
+          Reserva lista: {sortSeats(lastBooking.seats).join(', ')} para{' '}
+          {lastBooking.title}.
+        </p>
+      )}
+
+      {hasReservations && (
+        <button type="button" className="summary__reset" onClick={onReset}>
+          Liberar mis reservas de esta función
+        </button>
+      )}
       <div className="summary__barcode" aria-hidden="true" />
     </aside>
   )

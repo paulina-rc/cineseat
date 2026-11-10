@@ -140,6 +140,16 @@
   background: repeating-linear-gradient(-45deg, rgba(27, 26, 31, 0.45) 0 2px, transparent 2px 5px);
 }
 
+.seat--reserved {
+  background: var(--blue);
+  color: var(--paper-light);
+  cursor: not-allowed;
+}
+
+.dot--reserved {
+  background: var(--blue);
+}
+
 @keyframes pop {
   from {
     transform: translateY(0) scale(0.8);
@@ -174,7 +184,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .seat,
   .seat--selected {
     animation: none;
